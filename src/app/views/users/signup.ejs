@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <% include ../partials/header %>  
+    
+
+    <title>Registro</title>
+</head>
+<body>
+    <% include ../web/headerweb %>
+    
+    <div class="container">
+        <div class="row m-5">
+            <div class="col-md-8 offset-md-2 col-xs-12">
+                <div class="card animated flipInY">
+                    <div class="card-header">Registrarme</div>
+                    <div class="card-body">
+                        <form action="/auth/signup" method="post" autocomplete="off"> 
+                            
+                            <div class="form-group">
+                                <label for="dni">DNI:</label>
+                                <input type="number" name="dni" id="dni" placeholder="DNI" min= 1 max= 99999999 class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email:</label>
+                                <input type="email" name="email" id="email" placeholder="Email" class="form-control" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="password">Contraseña:</label>
+                                <input type="password" name="password" id="password" placeholder="Contraseña" class="form-control" required>
+                            </div>
+                            <button type="sumit" class="btn btn-primary">Registrarme</button>
+                        </form>
+                    </div>
+                    
+                </div>
+
+                <% if(authmessage.length > 0){ %>
+                        <div class="alert alert-danger alert-dismissible fade show mt-4 animated flipInY" role="alert">
+                            <%= authmessage %>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    <%}
+                    %>
+
+            </div>
+        </div>
+    </div>
+    <br>
+    <br>
+
+    <script>
+        $(document).ready(()=>{
+            $('#dni').focus();
+        })
+    </script>
+
+    <% include ../web/footerweb %>
+
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <% include ../partials/header %>
+
+
+        <title>Login</title>
+</head>
+
+<body>
+
+    <header>
+
+        <div class="container-fluid d-none d-lg-block d-xl-none d-xl-block" id="cabecera">
+            <div class="row justify-content-end">
+                <div class="col-2 pt-3">
+                    <a href="#"><i class="fab fa-facebook-square fa-2x ml-3"></i></a>
+                    <a href="#"><i class="fab fa-instagram fa-2x ml-3"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt=""> Consultorios Sagrada Familia
+            </a>
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button> -->
+
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="row m-5">
+            <div class="col-md-6 offset-md-3 col-xs-12">
+                <% if(message.length > 0){ %>
+                    <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                        <%= message %>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <%}
+                %>
+                        <div class="card animated pulse">
+                            <div class="card-header">Iniciar Sesión</div>
+                            <div class="card-body">
+                                <form action="/auth/signin" method="post" autocomplete="off">
+                                    <div class="form-group">
+                                        <label for="email">Email:</label>
+                                        <input type="email" name="username" id="email" placeholder="Email" class="form-control" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="password">Contraseña:</label>
+                                        <input type="password" name="password" id="password" placeholder="Contraseña" class="form-control" required>
+                                    </div>
+                                    <button type="sumit" class="btn btn-primary">Iniciar Sesión</button>
+                                </form>
+                            </div>
+
+                        </div>
+                        <% if(authmessage.length > 0){ %>
+                            <div class="alert alert-danger alert-dismissible fade show mt-4" role="alert">
+                                <%= authmessage %>
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            </div>
+                            <%}
+                    %>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(() => {
+            $('#email').focus();
+        })
+    </script>
+
+</body>
+
+</html>
