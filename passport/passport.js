@@ -16,6 +16,7 @@ module.exports = (passport) => {
         var myConnection = dbConnection();
         var consulta = 'SELECT * FROM user_web WHERE userName = ?';
         myConnection.query(consulta, email, (err, rows, fields) => {
+
             if (err) throw err;
 
             myConnection.end();
@@ -30,7 +31,9 @@ module.exports = (passport) => {
                         name: user.name,
                         lastname: user.lastname,
                         dni: user.userDni,
-                        idPaciente: user.idPaciente
+                        idPaciente: user.idPaciente,
+                        idDoctor: user.idDoctor,
+                        tipoUsuario: user.tipoUsuario
                     });
                 }
 

@@ -8,7 +8,6 @@ const session = require('express-session');
 const passport = require('passport');
 const passportdoc = require('passport');
 require('../../passport/passport')(passport);
-require('../../passport/passportdoc')(passportdoc);
 
 const app = express();
 
@@ -25,8 +24,6 @@ app.use(express.static('src/public'));
 
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(passportdoc.initialize());
-app.use(passportdoc.session());
 
 
 //settings

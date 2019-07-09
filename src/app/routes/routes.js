@@ -21,11 +21,6 @@ module.exports = app => {
         failureFlash: true
     }));
 
-    app.post('/auth/signindoc', passportdoc.authenticate('local', {
-        successRedirect: '/turnosdoctor',
-        failureRedirect: '/auth/signindoc',
-        failureFlash: true
-    }));
 
     app.get('/auth/logout', authMiddleware.isLogged, controllers.userController.logout);
 
