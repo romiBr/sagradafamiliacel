@@ -49,6 +49,10 @@ module.exports = {
         return res.render('users/signin', { message: req.flash('info'), authmessage: req.flash('authmessage') });
     },
 
+    getSignInDoc: (req, res, next) => {
+        return res.render('users/signindoc', { message: req.flash('info'), authmessage: req.flash('authmessage') });
+    },
+
     logout: (req, res, next) => {
         req.logout();
         res.redirect('/')

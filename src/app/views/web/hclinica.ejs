@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <% include ../partials/header %>
+
+
+        <title>Mis Turnos</title>
+</head>
+
+<body>
+
+    <header>
+
+        <div class="container-fluid d-none d-lg-block d-xl-none d-xl-block" id="cabecera">
+            <div class="row justify-content-end">
+                <div class="col-2 pt-3">
+                    <a href="#"><i class="fab fa-facebook-square fa-2x ml-3"></i></a>
+                    <a href="#"><i class="fab fa-instagram fa-2x ml-3"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/menuUsuario">
+                <img src="/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt=""> Consultorios Sagrada Familia
+            </a>
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button> -->
+
+        </div>
+    </nav>
+
+    <div class="container pt-3">
+        <div class="card">
+            <%if(historias.length == 0){%>
+                <p class="m-1 text-center"><strong>
+                    <%=user.name+" "+user.lastname%>
+                        </strong> no tienes historias clínicas aun.</p>
+                <%}%>
+                    <ul class="list-group list-group-flush">
+                        <% for(var i = 0; i < historias.length; i++){ %>
+                            <li class="list-group-item">
+                                <%=historias[i].contenido%>
+                            </li>
+                            <%}%>
+                    </ul>
+        </div>
+
+    </div>
+
+</body>
+
+</html>

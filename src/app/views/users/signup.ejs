@@ -1,25 +1,50 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <% include ../partials/header %>  
-    
 
-    <title>Registro</title>
+<head>
+    <% include ../partials/header %>
+
+
+        <title>Registro</title>
 </head>
+
 <body>
-    <% include ../web/headerweb %>
-    
-    <div class="container">
-        <div class="row m-5">
-            <div class="col-md-8 offset-md-2 col-xs-12">
+    <header>
+
+        <div class="container-fluid d-none d-lg-block d-xl-none d-xl-block" id="cabecera">
+            <div class="row justify-content-end">
+                <div class="col-2 pt-3">
+                    <a href="#"><i class="fab fa-facebook-square fa-2x ml-3"></i></a>
+                    <a href="#"><i class="fab fa-instagram fa-2x ml-3"></i></a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <a class="navbar-brand" href="/">
+                <img src="/img/logo.png" width="30" height="30" class="d-inline-block align-top" alt=""> Consultorios Sagrada Familia
+            </a>
+            <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button> -->
+
+        </div>
+    </nav>
+
+    <div class="container pt-3">
+        <div class="row lg-m-5 xl-m-5 md-m-5 sd-m-2 xs-m-2">
+            <div class="col-lg-6 offset-lg-3 col-xl-6 offset-xl-3 col-md-8 offset-md-2 col-sd-8 offset-sd-2 col-xs-8 offset-xs-2">
                 <div class="card animated flipInY">
                     <div class="card-header">Registrarme</div>
                     <div class="card-body">
-                        <form action="/auth/signup" method="post" autocomplete="off"> 
-                            
+                        <form action="/auth/signup" method="post" autocomplete="off">
+
                             <div class="form-group">
                                 <label for="dni">DNI:</label>
-                                <input type="number" name="dni" id="dni" placeholder="DNI" min= 1 max= 99999999 class="form-control" required>
+                                <input type="number" name="dni" id="dni" placeholder="DNI" min=1 max=9 9999999 class="form-control" required>
                             </div>
                             <div class="form-group">
                                 <label for="email">Email:</label>
@@ -32,16 +57,16 @@
                             <button type="sumit" class="btn btn-primary">Registrarme</button>
                         </form>
                     </div>
-                    
+
                 </div>
 
                 <% if(authmessage.length > 0){ %>
-                        <div class="alert alert-danger alert-dismissible fade show mt-4 animated flipInY" role="alert">
-                            <%= authmessage %>
+                    <div class="alert alert-danger alert-dismissible fade show mt-4 animated flipInY" role="alert">
+                        <%= authmessage %>
                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                        </div>
+                    </div>
                     <%}
                     %>
 
@@ -52,12 +77,10 @@
     <br>
 
     <script>
-        $(document).ready(()=>{
+        $(document).ready(() => {
             $('#dni').focus();
         })
     </script>
-
-    <% include ../web/footerweb %>
 
 </body>
 

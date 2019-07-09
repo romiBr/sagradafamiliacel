@@ -17,6 +17,13 @@ module.exports = app => {
             isAuthenticated: req.isAuthenticated(),
             user: req.user
         });
+    });
+
+    app.get('/turnosdoctor', (req, res) => {
+        res.render('web/turnosdoctor', {
+            isAuthenticated: req.isAuthenticated(),
+            user: req.user
+        });
     })
 
 }

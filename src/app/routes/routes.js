@@ -1,5 +1,6 @@
 const controllers = require('../controllers');
 const passport = require('passport');
+const passportdoc = require('passport');
 const authMiddleware = require('../../config/middleware/auth')
 
 module.exports = app => {
@@ -12,9 +13,17 @@ module.exports = app => {
 
     app.get('/auth/signin', controllers.userController.getSignIn);
 
+    app.get('/auth/signindoc', controllers.userController.getSignInDoc);
+
     app.post('/auth/signin', passport.authenticate('local', {
         successRedirect: '/menuUsuario',
         failureRedirect: '/auth/signin',
+        failureFlash: true
+    }));
+
+    app.post('/auth/signindoc', passportdoc.authenticate('local', {
+        successRedirect: '/turnosdoctor',
+        failureRedirect: '/auth/signindoc',
         failureFlash: true
     }));
 

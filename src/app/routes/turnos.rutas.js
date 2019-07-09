@@ -214,4 +214,39 @@ module.exports = app => {
         })
     });
 
+    app.get('/turnos/atendido/:id', authMiddleware.isLogged, (req, res) => {
+        let consulta = 'update turnos set atendido = 1 where turnos.idTurno =' + req.params.id;
+        myConnection.query(consulta, (err, resp) => {
+            res.json(resp);
+        })
+    });
+
+    app.get('/turnos/historia/:id', authMiddleware.isLogged, (req, res) => {
+        let consulta = 'SELECT h.contenido from historias h where h.idPaciente = ' + req.params.id;
+        myConnection.query(consulta, (err, historias) => {
+            if (err) {
+                console.log(err);
+            }
+            res.json(historias);
+        })
+    });
+
+    app.post('/turnos/guardar', authMiddleware.isLogged, (req, res) => {
+        const { paciente, doctor, contenido } = req.body;
+        //console.log(req.body);
+        let consulta = 'INSERT INTO historias set ?';
+        myConnection.query(consulta, {
+            contenido: contenido,
+            idPaciente: paciente,
+            idDoctor: doctor
+        }, (err, resul) => {
+            if (err) {
+                console.log(err);
+            }
+            if (resul) {
+                res.json(resul);
+            }
+        })
+    });
+
 }
